@@ -1,12 +1,17 @@
+#include <Wire.h> //needed for I2C
+#include <L3G.h>  //include Gyro-lib
+
 #define MOTOR1
 #define MOTOR2
 #define DISTANCE_L
 #define DISTANCE_R
 #define DISTANCE A0
-#
+
+L3G gyro;
 
 void setup() {
   Serial.begin(9600);
+  Wire.begin();
   // put your setup code here, to run once:
 
 }

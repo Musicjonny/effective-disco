@@ -28,12 +28,11 @@ void loop() {
   delay(1000);
   
  // for (i = 0; i< 255; i++) {
-  
   digitalWrite(MOTOR_R, LOW);
   digitalWrite(MOTOR_L, HIGH);
-  digitalWrite(ENABLE, HIGH);
- //analogWrite(ENABLE, i);
-  delay(100);
+  //digitalWrite(ENABLE, HIGH);
+  analogWrite(ENABLE, 150);
+  delay(1000);
  // }
   
   // put your main code here, to run repeatedly:
