@@ -1,53 +1,58 @@
 #include "drive.h"
 
 void setup_motor(){
-  pinMode(MOTOR_R_ENABLE, OUTPUT);
-  pinMode(MOTOR_R_FWD, OUTPUT);
-  pinMode(MOTOR_R_BWD, OUTPUT);
-  pinMode(MOTOR_L_ENABLE, OUTPUT);
-  pinMode(MOTOR_L_FWD, OUTPUT);
-  pinMode(MOTOR_L_BWD, OUTPUT);
+  pinMode(R_EN, OUTPUT);
+  pinMode(R_FWD, OUTPUT);
+  pinMode(R_BWD, OUTPUT);
+  pinMode(L_EN, OUTPUT);
+  pinMode(L_FWD, OUTPUT);
+  pinMode(L_BWD, OUTPUT);
 }
 
-void drive(int i){
-  if (i == BWD){
-    digitalWrite(MOTOR_R_FWD,LOW);
-    digitalWrite(MOTOR_R_BWD,HIGH);
-    digitalWrite(MOTOR_L_FWD,LOW);
-    digitalWrite(MOTOR_L_BWD,HIGH);
-    digitalWrite(MOTOR_R_ENABLE,HIGH);
-    digitalWrite(MOTOR_L_ENABLE, HIGH);
-    delay(1000);
-    digitalWrite(MOTOR_R_ENABLE,LOW);
-    digitalWrite(MOTOR_L_ENABLE,LOW);
-    delay(1000);
-  }
-  else if (i == FWD){
-    analogWrite(MOTOR_R_FWD,100);
-    digitalWrite(MOTOR_R_BWD,LOW);
-    analogWrite(MOTOR_L_FWD,100);
-    digitalWrite(MOTOR_L_BWD,LOW);
-    digitalWrite(MOTOR_R_ENABLE,HIGH);
-    digitalWrite(MOTOR_L_ENABLE, HIGH);
-    delay(1000);
-    digitalWrite(MOTOR_R_ENABLE,LOW);
-    digitalWrite(MOTOR_L_ENABLE,LOW);
-    delay(1000);
-  }
-  else if (i == LEFT){
-    digitalWrite(MOTOR_L_FWD,LOW);
-    digitalWrite(MOTOR_L_BWD,HIGH);
-    digitalWrite(MOTOR_L_ENABLE, HIGH);
-    delay(1000);
-    digitalWrite(MOTOR_L_ENABLE,LOW);
-    delay(1000);
-  }
-  else if (i == RIGHT){
-    digitalWrite(MOTOR_R_FWD,LOW);
-    digitalWrite(MOTOR_R_BWD,HIGH);
-    digitalWrite(MOTOR_R_ENABLE, HIGH);
-    delay(1000);
-    digitalWrite(MOTOR_R_ENABLE,LOW);
-    delay(1000);
+void drive(int i, int velocity){
+  switch(i){
+
+    case BWD:
+      digitalWrite(R_FWD,LOW);
+      digitalWrite(R_BWD,HIGH);
+      digitalWrite(L_FWD,LOW);
+      digitalWrite(L_BWD,HIGH);
+      digitalWrite(R_EN,HIGH);
+      digitalWrite(L_EN, HIGH);
+      delay(1000);
+      break;
+
+    case FWD:
+      analogWrite(R_FWD,100);
+      digitalWrite(R_BWD,LOW);
+      analogWrite(L_FWD,100);
+      digitalWrite(L_BWD,LOW);
+      digitalWrite(R_EN,HIGH);
+      digitalWrite(L_EN, HIGH);
+      delay(1000);
+      break;
+
+    case LEFT:
+      digitalWrite(L_FWD,LOW);
+      digitalWrite(L_BWD,HIGH);
+      digitalWrite(L_EN, HIGH);
+      delay(1000);
+      break;
+
+    case RIGHT:
+      digitalWrite(R_FWD,LOW);
+      digitalWrite(R_BWD,HIGH);
+      digitalWrite(R_EN, HIGH);
+      delay(1000);
+      break;
+
+      case STOP:
+      digitalWrite(R_FWD, LOW);
+      digitalWrite(R_BWD, LOW);
+      digitalWrite(L_FWD, LOW);
+      digitalWrite(L_BWD, LOW);
+      digitalWrite(R_EN, LOW);
+      digitalWrite(L_EN, LOW);
+      break;
   }
 }
