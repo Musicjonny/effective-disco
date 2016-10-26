@@ -23,9 +23,9 @@ void drive(int i, int velocity){
       break;
 
     case FWD:
-      analogWrite(R_FWD,100);
+      analogWrite(R_FWD,255);
       digitalWrite(R_BWD,LOW);
-      analogWrite(L_FWD,100);
+      analogWrite(L_FWD,255);
       digitalWrite(L_BWD,LOW);
       digitalWrite(R_EN,HIGH);
       digitalWrite(L_EN, HIGH);
@@ -43,7 +43,11 @@ void drive(int i, int velocity){
       digitalWrite(R_FWD,LOW);
       digitalWrite(R_BWD,HIGH);
       digitalWrite(R_EN, HIGH);
+      digitalWrite(L_BWD,HIGH);
+      digitalWrite(L_FWD,LOW);
+      digitalWrite(L_EN, HIGH);
       delay(1000);
+      
       break;
 
       case STOP:
