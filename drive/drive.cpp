@@ -14,40 +14,39 @@ void drive(int i, int velocity){
 
     case BWD:
       digitalWrite(R_FWD,LOW);
-      digitalWrite(R_BWD,HIGH);
+      analogWrite(R_BWD,velocity);
       digitalWrite(L_FWD,LOW);
-      digitalWrite(L_BWD,HIGH);
+      analogWrite(L_BWD,velocity);
       digitalWrite(R_EN,HIGH);
       digitalWrite(L_EN, HIGH);
       delay(1000);
       break;
 
     case FWD:
-      analogWrite(R_FWD,255);
+      analogWrite(R_FWD,velocity);
       digitalWrite(R_BWD,LOW);
-      analogWrite(L_FWD,255);
+      analogWrite(L_FWD,velocity);
       digitalWrite(L_BWD,LOW);
       digitalWrite(R_EN,HIGH);
       digitalWrite(L_EN, HIGH);
-      delay(1000);
       break;
 
     case LEFT:
       digitalWrite(L_FWD,LOW);
-      digitalWrite(L_BWD,HIGH);
+      analogWrite(L_BWD,velocity);
+      digitalWrite(R_FWD,velocity);
+      digitalWrite(R_BWD,LOW);
       digitalWrite(L_EN, HIGH);
-      delay(1000);
+      digitalWrite(R_EN, HIGH);
       break;
 
     case RIGHT:
       digitalWrite(R_FWD,LOW);
-      digitalWrite(R_BWD,HIGH);
+      analogWrite(R_BWD,velocity);
       digitalWrite(R_EN, HIGH);
-      digitalWrite(L_BWD,HIGH);
-      digitalWrite(L_FWD,LOW);
+      analogWrite(L_FWD,velocity);
+      digitalWrite(L_BWD,LOW);
       digitalWrite(L_EN, HIGH);
-      delay(1000);
-      
       break;
 
       case STOP:
