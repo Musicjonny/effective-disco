@@ -57,5 +57,23 @@ void drive(int i, int velocity){
       digitalWrite(R_EN, LOW);
       digitalWrite(L_EN, LOW);
       break;
+
+      case TURNRIGHT:
+      analogWrite(R_FWD,velocity);
+      analogWrite(R_BWD,LOW);
+      digitalWrite(R_EN, HIGH);
+      analogWrite(L_FWD,(velocity*7/10));
+      digitalWrite(L_BWD,LOW);
+      digitalWrite(L_EN, HIGH);
+      break;
+
+      case TURNLEFT:
+      analogWrite(L_FWD,velocity);
+      analogWrite(R_BWD,LOW);
+      digitalWrite(R_EN, HIGH);
+      analogWrite(R_FWD,(velocity*8/10));
+      digitalWrite(L_BWD,LOW);
+      digitalWrite(L_EN, HIGH);
+      break;
   }
 }

@@ -15,6 +15,8 @@
 #define RIGHT 2
 #define LEFT 3
 #define STOP 4
+#define TURNRIGHT 5
+#define TURNLEFT 6
 
 void setup_motor();
 
