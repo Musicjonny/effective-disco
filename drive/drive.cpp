@@ -1,6 +1,7 @@
 #include "drive.h"
 
-void setup_motor(){
+// wird einmal bei Programmstart aufgerufen und initialisiert die Pins für den Motor
+void setup_motor(){ 
   pinMode(R_EN, OUTPUT);
   pinMode(R_FWD, OUTPUT);
   pinMode(R_BWD, OUTPUT);
@@ -59,20 +60,20 @@ void drive(int i, int velocity){
       break;
 
       case TURNRIGHT:
-      analogWrite(R_FWD,velocity);
+      analogWrite(R_FWD,velocity*7/10);
       analogWrite(R_BWD,LOW);
       digitalWrite(R_EN, HIGH);
-      analogWrite(L_FWD,(velocity*7/10));
+      analogWrite(L_FWD,(velocity));
       digitalWrite(L_BWD,LOW);
       digitalWrite(L_EN, HIGH);
       break;
 
       case TURNLEFT:
-      analogWrite(L_FWD,velocity);
+      analogWrite(L_FWD,velocity*8/10);
       analogWrite(R_BWD,LOW);
-      digitalWrite(R_EN, HIGH);
-      analogWrite(R_FWD,(velocity*8/10));
+      analogWrite(R_FWD,(velocity));
       digitalWrite(L_BWD,LOW);
+      digitalWrite(R_EN, HIGH);
       digitalWrite(L_EN, HIGH);
       break;
   }
