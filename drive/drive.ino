@@ -4,6 +4,7 @@
 void setup() {
   setup_motor();
   setup_sensor();
+  pinMode(4, OUTPUT);
 }
 
 int i = 0;
@@ -11,7 +12,11 @@ int i = 0;
 //init: wait 10 seconds 
 void loop() {
   if (i == 0) {
-    delay(10000);
+    digitalWrite(4, HIGH);
+    delay(8000); //für wettbewerb auskommentieren um 10 sekunden zu warten
+    digitalWrite(4, LOW);
+    delay(2000);
+  delay(1);
   }
   i = 1;
 
@@ -25,26 +30,33 @@ only middle sensor: return 4
 */
 int j = 0;
 
-for (j = 0;j < 1000; j++){
+for (j = 0;j < 400; j++){
 state = which_sensor();
 switch (state) {
   case 0:
     Serial.println("no line detected");
-    drive(TURNLEFT,180);
-    delay(600);
+    drive(TURNLEFT,170);
     break;
   case 1:
     Serial.println("line detected: left");
-    drive(TURNRIGHT,180);
-    delay(1200);
-    j+=200;
+//    drive(TURNRIGHT,180);
+//    delay(800);
+//    j+=400;
+      drive(STOP, 0);
+      delay(500);
+      drive(RIGHT,180);
+      delay(220);
+      drive(FWD,200);
+      delay(500);
+      exit;
     break;
   case 2:
     Serial.println("line detected: right");
-    drive(RIGHT,180);
+    drive(STOP, 0);
     delay(200);
-    j+=100;
-    drive(STOP,0);
+    drive(RIGHT,180);
+    delay(150);
+   // j+=400;
     exit;
     break;
   case 3:
@@ -61,10 +73,13 @@ switch (state) {
     Serial.println("no state");
     break;
 }
-  drive(STOP,0);
-  delay(500);
+  
 
 }
+drive(STOP,0);
+digitalWrite(4, HIGH);
+  delay(800);
+digitalWrite(4, LOW);
 
 ///*simulated timed function with a for-loop */
 //for (j = 0;j < 1000; j++){

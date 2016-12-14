@@ -60,7 +60,7 @@ void drive(int i, int velocity){
       break;
 
       case TURNRIGHT:
-      analogWrite(R_FWD,velocity*7/10);
+      analogWrite(R_FWD,velocity*6/10);
       analogWrite(R_BWD,LOW);
       digitalWrite(R_EN, HIGH);
       analogWrite(L_FWD,(velocity));
