@@ -12,7 +12,7 @@
 
 void setup_sensor();
 
-int Sensor_Rechts (); //gibt einen gemittelten Helligkeitswert für den rechten Sensor aus
+long Sensor_Rechts (); //gibt einen gemittelten Helligkeitswert für den rechten Sensor aus
 int Sensor_Links (); //gibt einen gemittelten Helligkeitswert für den linken Sensor aus
 int Sensor_Mitte (); //gibt einen gemittelten Helligkeitswert für den mittleren Sensor aus
 
